@@ -50,23 +50,47 @@ body{
   content:'';position:absolute;inset:0;
   background:
     radial-gradient(circle at 25% 35%,rgba(196,112,106,.14) 0%,transparent 50%),
-    radial-gradient(circle at 75% 65%,rgba(196,112,106,.1) 0%,transparent 40%);
+    radial-gradient(circle at 75% 65%,rgba(196,112,106,.1) 0%,transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(0,0,0,.08) 0%,transparent 70%);
   pointer-events:none;
 }
+
+/* floating particles */
 .hero::after{
   content:'';position:absolute;
   width:5px;height:5px;
   background:var(--coral-soft);border-radius:50%;
   top:20%;left:12%;
   box-shadow:
-    55vw 8vh 0 2px rgba(196,112,106,.25),
-    72vw 55vh 0 1px rgba(196,112,106,.2),
-    18vw 68vh 0 3px rgba(196,112,106,.18),
-    40vw 18vh 0 1px rgba(196,112,106,.3),
-    82vw 32vh 0 2px rgba(196,112,106,.12);
+    55vw 8vh 0 2px rgba(196,112,106,.2),
+    72vw 55vh 0 1px rgba(196,112,106,.15),
+    18vw 68vh 0 3px rgba(196,112,106,.14),
+    40vw 18vh 0 1px rgba(196,112,106,.2),
+    82vw 32vh 0 2px rgba(196,112,106,.1);
   animation:drift 22s ease-in-out infinite alternate;
 }
 @keyframes drift{from{transform:translate(0,0)}to{transform:translate(-15px,12px)}}
+
+/* ═══ Mystical floating numbers ═══ */
+.mystical-numbers{
+  position:absolute;inset:0;
+  pointer-events:none;overflow:hidden;
+  z-index:0;
+}
+.mystical-numbers span{
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  color:rgba(212,180,131,.15);
+  font-weight:300;
+  animation:float-up linear infinite;
+  will-change:transform;
+}
+@keyframes float-up{
+  0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-10vh) rotate(360deg);opacity:0}
+}
 
 .hero-inner{
   position:relative;z-index:1;
@@ -75,12 +99,15 @@ body{
 }
 
 .hero-icon{
-  width:120px;height:120px;
+  width:160px;height:160px;
   border-radius:50%;
   object-fit:cover;
-  border:3px solid rgba(242,234,226,.3);
+  border:3px solid rgba(242,234,226,.25);
   margin-bottom:1.5rem;
-  box-shadow:0 8px 32px rgba(42,42,46,.15);
+  box-shadow:
+    0 0 40px rgba(196,112,106,.15),
+    0 0 80px rgba(142,168,158,.1),
+    0 8px 32px rgba(42,42,46,.2);
 }
 
 .hero-eyebrow{
@@ -149,7 +176,7 @@ section{padding:5.5rem 2rem}
 .section-title em{font-style:italic;font-family:'Cormorant Garamond',serif;color:var(--coral);font-weight:400}
 .accent-line{display:block;width:36px;height:1px;background:var(--coral);margin-bottom:2rem}
 
-/* ═══ About ═══ */
+/* ═══ About Numerology ═══ */
 .about-numerology{background:var(--white)}
 .about-body{font-size:.95rem;color:var(--ink-light);line-height:2.1;max-width:620px}
 .about-body p+p{margin-top:1.4rem}
@@ -159,6 +186,84 @@ section{padding:5.5rem 2rem}
   border-radius:0 3px 3px 0;font-size:.9rem;color:var(--ink-light);line-height:2;
 }
 .about-highlight strong{font-weight:500;color:var(--ink)}
+
+/* ═══ Number Cards (数秘術の数字) ═══ */
+.numbers-section{background:var(--cream)}
+.numbers-intro{
+  font-size:.92rem;color:var(--ink-light);line-height:2;
+  max-width:620px;margin-bottom:2.5rem;
+}
+
+.number-block{
+  margin-bottom:2.5rem;
+  padding:2rem;
+  background:var(--white);
+  border:1px solid rgba(142,168,158,.12);
+  border-radius:4px;
+}
+.number-block:last-child{margin-bottom:0}
+
+.number-block-header{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1rem;
+}
+.number-block-icon{
+  flex-shrink:0;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:var(--sage);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:500;
+  color:var(--cream);
+}
+.number-block h3{
+  font-family:'Zen Old Mincho',serif;
+  font-size:1.05rem;font-weight:400;
+  color:var(--ink);
+}
+.number-block h3 small{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:.75rem;font-weight:300;
+  color:var(--ink-faint);font-style:italic;
+  margin-top:.15rem;
+}
+.number-block p{
+  font-size:.88rem;color:var(--ink-light);line-height:2;
+}
+
+/* number meaning grid */
+.number-meanings{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.8rem;
+  margin-top:1.5rem;
+}
+.number-meaning{
+  text-align:center;
+  padding:1rem .5rem;
+  background:var(--cream);
+  border-radius:3px;
+}
+.number-meaning .num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:500;
+  color:var(--coral);
+  line-height:1;margin-bottom:.3rem;
+}
+.number-meaning .label{
+  font-size:.7rem;
+  color:var(--ink-faint);
+  line-height:1.5;
+}
+
+@media(max-width:600px){
+  .number-meanings{grid-template-columns:repeat(3,1fr);gap:.5rem}
+  .number-meaning{padding:.7rem .3rem}
+  .number-meaning .num{font-size:1.3rem}
+  .number-meaning .label{font-size:.62rem}
+}
 
 /* ═══ Menu ═══ */
 .menu{background:var(--cream)}
@@ -195,15 +300,16 @@ section{padding:5.5rem 2rem}
 .menu-cta{text-align:center}
 
 /* ═══ OpenChat Banner ═══ */
-.openchat-banner{background:var(--sage);text-align:center;padding:4rem 2rem}
+.openchat-banner{background:var(--sage);text-align:center;padding:4rem 2rem;position:relative;overflow:hidden}
+.openchat-banner .mystical-numbers span{color:rgba(242,234,226,.05)}
 .openchat-banner .banner-text{
   font-family:'Zen Old Mincho',serif;
   font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--cream);
-  margin-bottom:.6rem;letter-spacing:.04em;
+  margin-bottom:.6rem;letter-spacing:.04em;position:relative;z-index:1;
 }
 .openchat-banner .banner-sub{
   font-size:.85rem;color:var(--cream-warm);opacity:.7;
-  margin-bottom:2rem;line-height:1.9;
+  margin-bottom:2rem;line-height:1.9;position:relative;z-index:1;
 }
 
 /* ═══ Flow ═══ */
@@ -256,18 +362,23 @@ footer{
 .fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
 
-/* ═══ LINE SVG ═══ */
 .line-svg{fill:currentColor}
 
 /* ═══ Responsive ═══ */
 @media(max-width:600px){
   section{padding:4rem 1.5rem}
-  .hero-icon{width:100px;height:100px}
-  .menu-grid{grid-template-columns:1fr}
+  .hero-icon{width:140px;height:140px}
+  .menu-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .menu-card-body{padding:.8rem .9rem 1rem}
+  .menu-card-body h3{font-size:.8rem}
+  .menu-card-body p{font-size:.68rem;margin-bottom:.4rem}
+  .menu-card-price{font-size:.9rem}
+  .menu-card-tag{font-size:.5rem;padding:.15rem .35rem;margin-left:.3rem}
   .flow-step{gap:1rem}
   .btn{font-size:.78rem;padding:.65rem 1.6rem}
   .openchat-banner{padding:3rem 1.5rem}
   .final-cta{padding:4rem 1.5rem}
+  .number-block{padding:1.5rem}
 }
 
 @media(prefers-reduced-motion:reduce){
@@ -275,6 +386,7 @@ footer{
   .scroll-hint span{animation:none}
   .fade-in{transition:none;opacity:1;transform:none}
   .menu-card:hover .menu-card-img img{transform:none}
+  .mystical-numbers span{animation:none;display:none}
 }
 </style>
 </head>
@@ -282,6 +394,7 @@ footer{
 
 <!-- ══ HERO ══ -->
 <section class="hero">
+  <div class="mystical-numbers" id="heroNumbers"></div>
   <div class="hero-inner">
     <img src="icon.png" alt="のあ" class="hero-icon">
     <p class="hero-eyebrow">Numerology Reading</p>
@@ -318,11 +431,61 @@ footer{
       </p>
       <div class="about-highlight">
         <strong>のあの鑑定</strong>では、あなたの生年月日から
-        ライフパスナンバー・ディスティニーナンバーなどを算出し、
+        ライフパスナンバー・パーソナルイヤーなどを算出し、
         お悩みに合わせて丁寧に読み解きます。
         鑑定結果はテキスト鑑定書として公式LINEでお届けします。
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ══ 数秘術の数字 ══ -->
+<section class="numbers-section" id="numbers">
+  <div class="section-inner">
+    <p class="section-label fade-in">Numbers</p>
+    <h2 class="section-title fade-in">数字が語る、<em>あなたの物語</em></h2>
+    <span class="accent-line fade-in"></span>
+    <p class="numbers-intro fade-in">
+      数秘術では、いくつかの重要な数字を読み解くことで
+      あなた自身の全体像が浮かび上がります。
+    </p>
+
+    <!-- Life Path Number -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">LP</div>
+        <h3>ライフパスナンバー<small>Life Path Number</small></h3>
+      </div>
+      <p>
+        「人生の道（ライフパス）」を意味する、数秘術の中心となる数字です。
+        今世での役割や持って生まれた才能、思考のクセを示します。
+      </p>
+    </div>
+
+    <!-- Personal Year -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">PY</div>
+        <h3>パーソナルイヤーナンバー<small>Personal Year Number</small></h3>
+      </div>
+      <p>
+        9年周期で巡る、その年ごとの個人のテーマや運気の流れを表す数字です。
+        カレンダーの新年（1月1日）ではなく、「誕生日から次の誕生日まで」の1年間が対象になります。
+      </p>
+    </div>
+
+    <!-- Birthday Number -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">BD</div>
+        <h3>バースデーナンバー<small>Birthday Number</small></h3>
+      </div>
+      <p>
+        生まれた「日」の数字から導き出す、コアナンバーのひとつです。
+        その人の生まれ持った強みや個性、才能を表します。
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -334,7 +497,6 @@ footer{
     <span class="accent-line fade-in"></span>
 
     <div class="menu-grid">
-
       <a href="https://noa.stores.jp/items/69d14b05bd9ebeb9ce5df3de" target="_blank" rel="noopener" class="menu-card fade-in">
         <div class="menu-card-img">
           <img src="menu-basic.png" alt="基本鑑定" loading="lazy">
@@ -378,7 +540,6 @@ footer{
           <span class="menu-card-price">¥5,000</span>
         </div>
       </a>
-
     </div>
 
     <div class="menu-cta fade-in">
@@ -391,9 +552,10 @@ footer{
 
 <!-- ══ OpenChat Banner ══ -->
 <div class="openchat-banner">
+  <div class="mystical-numbers" id="bannerNumbers"></div>
   <p class="banner-text fade-in">まずはお気軽にご参加ください</p>
   <p class="banner-sub fade-in">数秘の豆知識や日々のメッセージを配信中</p>
-  <a href="https://x.gd/PQnRG" target="_blank" rel="noopener" class="btn btn-line fade-in">
+  <a href="https://x.gd/PQnRG" target="_blank" rel="noopener" class="btn btn-line fade-in" style="position:relative;z-index:1">
     <svg class="btn-icon" viewBox="0 0 24 24"><path class="line-svg" d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.63-.63.63h-2.386a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 .63-.63h2.386c.349 0 .63.282.63.63 0 .349-.281.631-.63.631H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 0 1-.63.63.629.629 0 0 1-.51-.26l-2.443-3.317v2.947a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 .63-.63c.2 0 .385.095.505.254l2.449 3.32V8.108a.63.63 0 0 1 1.26 0v4.771zm-5.741 0a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 1.26 0v4.771zm-2.527.63H4.856a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 1.26 0v4.14h1.756c.348 0 .629.283.629.631 0 .348-.281.63-.629.63zM12 1c-6.627 0-12 4.208-12 9.399 0 4.636 4.097 8.534 9.602 9.281.375.082.886.257.998.59.104.303.068.778.034 1.081l-.157.938c-.05.301-.234 1.183 1.026.645 1.261-.539 6.799-4.009 9.28-6.867C22.754 14.036 24 11.88 24 9.399 24 5.208 19.627 1 12 1z"/></svg>
     LINEオープンチャットに参加
   </a>
@@ -447,6 +609,7 @@ footer{
 
 <!-- ══ Final CTA ══ -->
 <section class="final-cta">
+  <div class="mystical-numbers" id="ctaNumbers"></div>
   <div class="cta-inner">
     <p class="cta-text fade-in">
       数字が教えてくれる、<br>
@@ -465,10 +628,30 @@ footer{
 <footer>&copy; 2026 のあ｜数秘術鑑定</footer>
 
 <script>
+// Intersection Observer for fade-in
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
 },{threshold:.12});
 document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Mystical floating numbers
+function createFloatingNumbers(containerId, count){
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  const symbols=['1','2','3','4','5','6','7','8','9','11','22','33','✦','☽','∞'];
+  for(let i=0;i<count;i++){
+    const span=document.createElement('span');
+    span.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    span.style.left=Math.random()*100+'%';
+    span.style.fontSize=(Math.random()*2+1)+'rem';
+    span.style.animationDuration=(Math.random()*15+15)+'s';
+    span.style.animationDelay=(Math.random()*20)+'s';
+    container.appendChild(span);
+  }
+}
+createFloatingNumbers('heroNumbers',20);
+createFloatingNumbers('bannerNumbers',10);
+createFloatingNumbers('ctaNumbers',10);
 </script>
 </body>
 </html>
