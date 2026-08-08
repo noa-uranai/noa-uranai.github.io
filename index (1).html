@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>のあ｜数秘術鑑定 noa uranai</title>
+<meta name="description" content="数秘術鑑定師のあ。生年月日に宿る数字から、あなたの本質と未来のヒントを読み解きます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;500&family=Zen+Old+Mincho:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --sage:#8EA89E;
+  --sage-deep:#6B8B7B;
+  --sage-light:#A8BFB4;
+  --sage-pale:#C8D8CF;
+  --coral:#C4706A;
+  --coral-soft:#D4918C;
+  --coral-pale:#E4B1AC;
+  --cream:#F2EAE2;
+  --cream-warm:#E8DDD4;
+  --ink:#2A2A2E;
+  --ink-light:#4A4A50;
+  --ink-faint:#6A6A72;
+  --white:#FAFAF8;
+}
+
+html{scroll-behavior:smooth;font-size:16px}
+
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-weight:300;
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ═══ HERO ═══ */
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  background:var(--sage);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 25% 35%,rgba(196,112,106,.14) 0%,transparent 50%),
+    radial-gradient(circle at 75% 65%,rgba(196,112,106,.1) 0%,transparent 40%),
+    radial-gradient(circle at 50% 50%,rgba(0,0,0,.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* floating particles */
+.hero::after{
+  content:'';position:absolute;
+  width:5px;height:5px;
+  background:var(--coral-soft);border-radius:50%;
+  top:20%;left:12%;
+  box-shadow:
+    55vw 8vh 0 2px rgba(196,112,106,.2),
+    72vw 55vh 0 1px rgba(196,112,106,.15),
+    18vw 68vh 0 3px rgba(196,112,106,.14),
+    40vw 18vh 0 1px rgba(196,112,106,.2),
+    82vw 32vh 0 2px rgba(196,112,106,.1);
+  animation:drift 22s ease-in-out infinite alternate;
+}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-15px,12px)}}
+
+/* ═══ Mystical floating numbers ═══ */
+.mystical-numbers{
+  position:absolute;inset:0;
+  pointer-events:none;overflow:hidden;
+  z-index:0;
+}
+.mystical-numbers span{
+  position:absolute;
+  font-family:'Cormorant Garamond',serif;
+  color:rgba(212,180,131,.15);
+  font-weight:300;
+  animation:float-up linear infinite;
+  will-change:transform;
+}
+@keyframes float-up{
+  0%{transform:translateY(100vh) rotate(0deg);opacity:0}
+  10%{opacity:1}
+  90%{opacity:1}
+  100%{transform:translateY(-10vh) rotate(360deg);opacity:0}
+}
+
+.hero-inner{
+  position:relative;z-index:1;
+  text-align:center;
+  padding:2rem;max-width:640px;
+}
+
+.hero-icon{
+  width:160px;height:160px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(242,234,226,.25);
+  margin-bottom:1.5rem;
+  box-shadow:
+    0 0 40px rgba(196,112,106,.15),
+    0 0 80px rgba(142,168,158,.1),
+    0 8px 32px rgba(42,42,46,.2);
+}
+
+.hero-eyebrow{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.78rem;font-weight:300;
+  letter-spacing:.4em;text-transform:uppercase;
+  color:var(--cream);opacity:.55;
+  margin-bottom:1rem;
+}
+.hero-name{
+  font-family:'Zen Old Mincho',serif;
+  font-size:clamp(2.6rem,6vw,4rem);font-weight:400;
+  color:var(--cream);line-height:1.2;
+  letter-spacing:.1em;margin-bottom:.5rem;
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(.95rem,2vw,1.15rem);
+  font-weight:300;font-style:italic;
+  color:var(--coral-pale);letter-spacing:.06em;
+  margin-bottom:1.6rem;
+}
+.hero-copy{
+  font-size:.88rem;color:var(--cream-warm);opacity:.85;
+  max-width:400px;margin:0 auto 2.5rem;line-height:2;
+}
+
+/* ═══ Buttons ═══ */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:.82rem;font-weight:400;letter-spacing:.1em;
+  text-decoration:none;padding:.75rem 2rem;
+  border-radius:3px;transition:all .35s ease;
+  cursor:pointer;border:none;
+}
+.btn-line{background:var(--cream);color:var(--sage-deep)}
+.btn-line:hover{background:var(--white);transform:translateY(-2px);box-shadow:0 6px 24px rgba(42,42,46,.1)}
+.btn-coral{background:var(--coral);color:var(--cream)}
+.btn-coral:hover{background:var(--coral-soft);transform:translateY(-2px);box-shadow:0 6px 24px rgba(196,112,106,.25)}
+.btn-outline{background:transparent;color:var(--cream);border:1px solid rgba(242,234,226,.3)}
+.btn-outline:hover{background:var(--cream);color:var(--sage-deep);border-color:var(--cream)}
+.btn-icon{width:18px;height:18px;flex-shrink:0}
+
+.scroll-hint{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+  color:var(--cream);opacity:.3;font-size:.6rem;letter-spacing:.2em;
+}
+.scroll-hint span{width:1px;height:24px;background:var(--cream);animation:pulse-line 2s ease-in-out infinite}
+@keyframes pulse-line{0%,100%{opacity:.2;transform:scaleY(.5)}50%{opacity:.6;transform:scaleY(1)}}
+
+/* ═══ Sections ═══ */
+section{padding:5.5rem 2rem}
+.section-inner{max-width:800px;margin:0 auto}
+.section-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;
+  color:var(--sage-deep);margin-bottom:.8rem;
+}
+.section-title{
+  font-family:'Zen Old Mincho',serif;
+  font-size:clamp(1.5rem,3.5vw,2rem);font-weight:400;
+  color:var(--ink);line-height:1.4;margin-bottom:2rem;letter-spacing:.04em;
+}
+.section-title em{font-style:italic;font-family:'Cormorant Garamond',serif;color:var(--coral);font-weight:400}
+.accent-line{display:block;width:36px;height:1px;background:var(--coral);margin-bottom:2rem}
+
+/* ═══ About Numerology ═══ */
+.about-numerology{background:var(--white)}
+.about-body{font-size:.95rem;color:var(--ink-light);line-height:2.1;max-width:620px}
+.about-body p+p{margin-top:1.4rem}
+.about-highlight{
+  margin-top:2.5rem;padding:1.8rem 2rem;
+  background:var(--cream);border-left:2px solid var(--coral-soft);
+  border-radius:0 3px 3px 0;font-size:.9rem;color:var(--ink-light);line-height:2;
+}
+.about-highlight strong{font-weight:500;color:var(--ink)}
+
+/* ═══ Number Cards (数秘術の数字) ═══ */
+.numbers-section{background:var(--cream)}
+.numbers-intro{
+  font-size:.92rem;color:var(--ink-light);line-height:2;
+  max-width:620px;margin-bottom:2.5rem;
+}
+
+.number-block{
+  margin-bottom:2.5rem;
+  padding:2rem;
+  background:var(--white);
+  border:1px solid rgba(142,168,158,.12);
+  border-radius:4px;
+}
+.number-block:last-child{margin-bottom:0}
+
+.number-block-header{
+  display:flex;align-items:center;gap:1rem;
+  margin-bottom:1rem;
+}
+.number-block-icon{
+  flex-shrink:0;
+  width:44px;height:44px;
+  border-radius:50%;
+  background:var(--sage);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.1rem;font-weight:500;
+  color:var(--cream);
+}
+.number-block h3{
+  font-family:'Zen Old Mincho',serif;
+  font-size:1.05rem;font-weight:400;
+  color:var(--ink);
+}
+.number-block h3 small{
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:.75rem;font-weight:300;
+  color:var(--ink-faint);font-style:italic;
+  margin-top:.15rem;
+}
+.number-block p{
+  font-size:.88rem;color:var(--ink-light);line-height:2;
+}
+
+/* number meaning grid */
+.number-meanings{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.8rem;
+  margin-top:1.5rem;
+}
+.number-meaning{
+  text-align:center;
+  padding:1rem .5rem;
+  background:var(--cream);
+  border-radius:3px;
+}
+.number-meaning .num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:500;
+  color:var(--coral);
+  line-height:1;margin-bottom:.3rem;
+}
+.number-meaning .label{
+  font-size:.7rem;
+  color:var(--ink-faint);
+  line-height:1.5;
+}
+
+@media(max-width:600px){
+  .number-meanings{grid-template-columns:repeat(3,1fr);gap:.5rem}
+  .number-meaning{padding:.7rem .3rem}
+  .number-meaning .num{font-size:1.3rem}
+  .number-meaning .label{font-size:.62rem}
+}
+
+/* ═══ Menu ═══ */
+.menu{background:var(--cream)}
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1.5rem;margin-bottom:2.5rem;
+}
+.menu-card{
+  background:var(--white);border:1px solid rgba(142,168,158,.12);
+  border-radius:4px;overflow:hidden;transition:all .4s ease;
+  text-decoration:none;color:inherit;display:block;
+}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 10px 36px rgba(42,42,46,.07)}
+.menu-card-img{
+  width:100%;aspect-ratio:1/1;overflow:hidden;
+  background:var(--sage-pale);
+}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.menu-card:hover .menu-card-img img{transform:scale(1.03)}
+.menu-card-body{padding:1.2rem 1.3rem 1.4rem}
+.menu-card-body h3{
+  font-family:'Zen Old Mincho',serif;
+  font-size:.95rem;font-weight:400;margin-bottom:.4rem;color:var(--ink);
+  line-height:1.5;
+}
+.menu-card-body p{font-size:.78rem;color:var(--ink-faint);line-height:1.7;margin-bottom:.7rem}
+.menu-card-price{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500;color:var(--coral)}
+.menu-card-tag{
+  display:inline-block;font-size:.6rem;letter-spacing:.08em;
+  padding:.2rem .5rem;background:var(--coral-soft);color:var(--cream);
+  border-radius:2px;margin-left:.5rem;vertical-align:middle;
+}
+.menu-cta{text-align:center}
+
+/* ═══ OpenChat Banner ═══ */
+.openchat-banner{background:var(--sage);text-align:center;padding:4rem 2rem;position:relative;overflow:hidden}
+.openchat-banner .mystical-numbers span{color:rgba(242,234,226,.05)}
+.openchat-banner .banner-text{
+  font-family:'Zen Old Mincho',serif;
+  font-size:clamp(1.1rem,2.5vw,1.4rem);color:var(--cream);
+  margin-bottom:.6rem;letter-spacing:.04em;position:relative;z-index:1;
+}
+.openchat-banner .banner-sub{
+  font-size:.85rem;color:var(--cream-warm);opacity:.7;
+  margin-bottom:2rem;line-height:1.9;position:relative;z-index:1;
+}
+
+/* ═══ Flow ═══ */
+.flow{background:var(--white)}
+.flow-steps{display:flex;flex-direction:column;max-width:540px;margin:0 auto}
+.flow-step{display:flex;gap:1.5rem;align-items:flex-start;position:relative;padding-bottom:2.5rem}
+.flow-step:last-child{padding-bottom:0}
+.flow-step-marker{
+  flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  background:var(--sage);display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:500;
+  color:var(--cream);position:relative;z-index:1;
+}
+.flow-step:not(:last-child) .flow-step-marker::after{
+  content:'';position:absolute;top:40px;left:50%;transform:translateX(-50%);
+  width:1px;height:calc(100% + 12px);background:var(--sage-pale);
+}
+.flow-step-content{padding-top:.5rem}
+.flow-step-content h4{
+  font-family:'Zen Old Mincho',serif;font-size:1rem;font-weight:400;
+  color:var(--ink);margin-bottom:.3rem;
+}
+.flow-step-content p{font-size:.82rem;color:var(--ink-faint);line-height:1.8}
+
+/* ═══ Final CTA ═══ */
+.final-cta{
+  background:var(--sage);text-align:center;padding:5rem 2rem;
+  position:relative;overflow:hidden;
+}
+.final-cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 50%,rgba(196,112,106,.1) 0%,transparent 60%);
+  pointer-events:none;
+}
+.final-cta .cta-inner{position:relative;z-index:1}
+.final-cta .cta-text{
+  font-family:'Zen Old Mincho',serif;
+  font-size:clamp(1.3rem,3vw,1.8rem);color:var(--cream);
+  line-height:1.6;margin-bottom:2.5rem;letter-spacing:.04em;
+}
+.final-cta .cta-text em{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--coral-pale)}
+.final-cta .cta-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+footer{
+  background:var(--ink);color:var(--cream);text-align:center;
+  padding:2rem;font-size:.68rem;letter-spacing:.1em;opacity:.45;
+}
+
+/* ═══ Fade-in ═══ */
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+.line-svg{fill:currentColor}
+
+/* ═══ Responsive ═══ */
+@media(max-width:600px){
+  section{padding:4rem 1.5rem}
+  .hero-icon{width:140px;height:140px}
+  .menu-grid{grid-template-columns:repeat(2,1fr);gap:.8rem}
+  .menu-card-body{padding:.8rem .9rem 1rem}
+  .menu-card-body h3{font-size:.8rem}
+  .menu-card-body p{font-size:.68rem;margin-bottom:.4rem}
+  .menu-card-price{font-size:.9rem}
+  .menu-card-tag{font-size:.5rem;padding:.15rem .35rem;margin-left:.3rem}
+  .flow-step{gap:1rem}
+  .btn{font-size:.78rem;padding:.65rem 1.6rem}
+  .openchat-banner{padding:3rem 1.5rem}
+  .final-cta{padding:4rem 1.5rem}
+  .number-block{padding:1.5rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero::after{animation:none}
+  .scroll-hint span{animation:none}
+  .fade-in{transition:none;opacity:1;transform:none}
+  .menu-card:hover .menu-card-img img{transform:none}
+  .mystical-numbers span{animation:none;display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="mystical-numbers" id="heroNumbers"></div>
+  <div class="hero-inner">
+    <img src="icon.png" alt="のあ" class="hero-icon">
+    <p class="hero-eyebrow">Numerology Reading</p>
+    <h1 class="hero-name">のあ</h1>
+    <p class="hero-sub">数秘術鑑定</p>
+    <p class="hero-copy">
+      生年月日に宿る数字から、<br>
+      あなたの本質と未来のヒントを読み解きます。
+    </p>
+    <a href="https://x.gd/PQnRG" target="_blank" rel="noopener" class="btn btn-line">
+      <svg class="btn-icon" viewBox="0 0 24 24"><path class="line-svg" d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.63-.63.63h-2.386a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 .63-.63h2.386c.349 0 .63.282.63.63 0 .349-.281.631-.63.631H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 0 1-.63.63.629.629 0 0 1-.51-.26l-2.443-3.317v2.947a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 .63-.63c.2 0 .385.095.505.254l2.449 3.32V8.108a.63.63 0 0 1 1.26 0v4.771zm-5.741 0a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 1.26 0v4.771zm-2.527.63H4.856a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 1.26 0v4.14h1.756c.348 0 .629.283.629.631 0 .348-.281.63-.629.63zM12 1c-6.627 0-12 4.208-12 9.399 0 4.636 4.097 8.534 9.602 9.281.375.082.886.257.998.59.104.303.068.778.034 1.081l-.157.938c-.05.301-.234 1.183 1.026.645 1.261-.539 6.799-4.009 9.28-6.867C22.754 14.036 24 11.88 24 9.399 24 5.208 19.627 1 12 1z"/></svg>
+      LINEオープンチャットに参加
+    </a>
+  </div>
+  <div class="scroll-hint"><span></span></div>
+</section>
+
+<!-- ══ 数秘術とは？ ══ -->
+<section class="about-numerology" id="about">
+  <div class="section-inner">
+    <p class="section-label fade-in">What is Numerology</p>
+    <h2 class="section-title fade-in">数秘術とは？</h2>
+    <span class="accent-line fade-in"></span>
+    <div class="about-body fade-in">
+      <p>
+        数秘術は、生年月日や名前に宿る「数字」を手がかりに、
+        その人が生まれ持った才能・性格・人生のテーマを読み解く占術です。
+        古代ギリシャの数学者ピタゴラスに起源を持ち、数千年の歴史があります。
+      </p>
+      <p>
+        「なぜか同じパターンを繰り返してしまう」「自分の強みがわからない」
+        ——そんなモヤモヤに、数字は驚くほどクリアな答えをくれます。
+        生まれた日に偶然はありません。あなただけの数字を、一緒に紐解いてみませんか。
+      </p>
+      <div class="about-highlight">
+        <strong>のあの鑑定</strong>では、あなたの生年月日から
+        ライフパスナンバー・パーソナルイヤーなどを算出し、
+        お悩みに合わせて丁寧に読み解きます。
+        鑑定結果はテキスト鑑定書として公式LINEでお届けします。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 数秘術の数字 ══ -->
+<section class="numbers-section" id="numbers">
+  <div class="section-inner">
+    <p class="section-label fade-in">Numbers</p>
+    <h2 class="section-title fade-in">数字が語る、<em>あなたの物語</em></h2>
+    <span class="accent-line fade-in"></span>
+    <p class="numbers-intro fade-in">
+      数秘術では、いくつかの重要な数字を読み解くことで
+      あなた自身の全体像が浮かび上がります。
+    </p>
+
+    <!-- Life Path Number -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">LP</div>
+        <h3>ライフパスナンバー<small>Life Path Number</small></h3>
+      </div>
+      <p>
+        「人生の道（ライフパス）」を意味する、数秘術の中心となる数字です。
+        今世での役割や持って生まれた才能、思考のクセを示します。
+      </p>
+    </div>
+
+    <!-- Personal Year -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">PY</div>
+        <h3>パーソナルイヤーナンバー<small>Personal Year Number</small></h3>
+      </div>
+      <p>
+        9年周期で巡る、その年ごとの個人のテーマや運気の流れを表す数字です。
+        カレンダーの新年（1月1日）ではなく、「誕生日から次の誕生日まで」の1年間が対象になります。
+      </p>
+    </div>
+
+    <!-- Birthday Number -->
+    <div class="number-block fade-in">
+      <div class="number-block-header">
+        <div class="number-block-icon">BD</div>
+        <h3>バースデーナンバー<small>Birthday Number</small></h3>
+      </div>
+      <p>
+        生まれた「日」の数字から導き出す、コアナンバーのひとつです。
+        その人の生まれ持った強みや個性、才能を表します。
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ 鑑定メニュー ══ -->
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <p class="section-label fade-in">Menu</p>
+    <h2 class="section-title fade-in">鑑定<em>メニュー</em></h2>
+    <span class="accent-line fade-in"></span>
+
+    <div class="menu-grid">
+      <a href="https://noa.stores.jp/items/69d14b05bd9ebeb9ce5df3de" target="_blank" rel="noopener" class="menu-card fade-in">
+        <div class="menu-card-img">
+          <img src="menu-basic.png" alt="基本鑑定" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <h3>あなたの数字のトリセツ</h3>
+          <p>本質・才能・人生のテーマ・対人関係のクセ、そしてこの先1年の流れまで。8,000〜10,000字でお届け。</p>
+          <span class="menu-card-price">¥5,000</span>
+        </div>
+      </a>
+
+      <a href="https://noa.stores.jp/items/69d14a68d9444448557d6e9a" target="_blank" rel="noopener" class="menu-card fade-in">
+        <div class="menu-card-img">
+          <img src="menu-compatibility.png" alt="相性鑑定" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <h3>トリセツ＋ふたりの答え合わせ<span class="menu-card-tag">フルセット</span></h3>
+          <p>自分のことも、あの人のことも。ふたりの相性・すれ違いポイントまで。18,000字のボリューム。</p>
+          <span class="menu-card-price">¥12,000</span>
+        </div>
+      </a>
+
+      <a href="https://noa.stores.jp/items/6a4903ab50f81da0d54c9005" target="_blank" rel="noopener" class="menu-card fade-in">
+        <div class="menu-card-img">
+          <img src="menu-branch.png" alt="分岐鑑定" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <h3>もうひとつの数字の地図</h3>
+          <p>あなたが選ばなかった未来を読み解く。もうひとつの可能性を、数字が照らします。</p>
+          <span class="menu-card-price">¥5,000</span>
+        </div>
+      </a>
+
+      <a href="https://noa.stores.jp/items/69e5fc66fddd800044581266" target="_blank" rel="noopener" class="menu-card fade-in">
+        <div class="menu-card-img">
+          <img src="menu-deep.png" alt="深堀鑑定" loading="lazy">
+        </div>
+        <div class="menu-card-body">
+          <h3>クローズアップ鑑定<span class="menu-card-tag">オプション</span></h3>
+          <p>気になる3ヶ月間を深掘り。月ごとの流れ・動き方・判断のコツまでお届け。</p>
+          <span class="menu-card-price">¥5,000</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="menu-cta fade-in">
+      <a href="https://noa.stores.jp/" target="_blank" rel="noopener" class="btn btn-coral">
+        STORESで全メニューを見る
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ OpenChat Banner ══ -->
+<div class="openchat-banner">
+  <div class="mystical-numbers" id="bannerNumbers"></div>
+  <p class="banner-text fade-in">まずはお気軽にご参加ください</p>
+  <p class="banner-sub fade-in">数秘の豆知識や日々のメッセージを配信中</p>
+  <a href="https://x.gd/PQnRG" target="_blank" rel="noopener" class="btn btn-line fade-in" style="position:relative;z-index:1">
+    <svg class="btn-icon" viewBox="0 0 24 24"><path class="line-svg" d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.63-.63.63h-2.386a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 .63-.63h2.386c.349 0 .63.282.63.63 0 .349-.281.631-.63.631H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 0 1-.63.63.629.629 0 0 1-.51-.26l-2.443-3.317v2.947a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 .63-.63c.2 0 .385.095.505.254l2.449 3.32V8.108a.63.63 0 0 1 1.26 0v4.771zm-5.741 0a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 1.26 0v4.771zm-2.527.63H4.856a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 1.26 0v4.14h1.756c.348 0 .629.283.629.631 0 .348-.281.63-.629.63zM12 1c-6.627 0-12 4.208-12 9.399 0 4.636 4.097 8.534 9.602 9.281.375.082.886.257.998.59.104.303.068.778.034 1.081l-.157.938c-.05.301-.234 1.183 1.026.645 1.261-.539 6.799-4.009 9.28-6.867C22.754 14.036 24 11.88 24 9.399 24 5.208 19.627 1 12 1z"/></svg>
+    LINEオープンチャットに参加
+  </a>
+</div>
+
+<!-- ══ お申し込みの流れ ══ -->
+<section class="flow" id="flow">
+  <div class="section-inner">
+    <p class="section-label fade-in">How to Order</p>
+    <h2 class="section-title fade-in">お申し込みの<em>流れ</em></h2>
+    <span class="accent-line fade-in"></span>
+    <div class="flow-steps fade-in">
+      <div class="flow-step">
+        <div class="flow-step-marker">1</div>
+        <div class="flow-step-content">
+          <h4>希望のメニューを選ぶ</h4>
+          <p>STORESの鑑定メニューから、お悩みに合ったプランをお選びください。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-marker">2</div>
+        <div class="flow-step-content">
+          <h4>公式LINEを追加</h4>
+          <p>ご購入後に表示されるQRコードから、公式LINEを友だち追加してください。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-marker">3</div>
+        <div class="flow-step-content">
+          <h4>ご相談内容を送る</h4>
+          <p>生年月日と、今いちばん気になっていることをLINEでお送りください。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-marker">4</div>
+        <div class="flow-step-content">
+          <h4>鑑定実施</h4>
+          <p>数秘術をもとに、丁寧に鑑定いたします。通常3〜7日ほどお時間をいただきます。</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-marker">5</div>
+        <div class="flow-step-content">
+          <h4>公式LINEに結果をお届け</h4>
+          <p>テキスト鑑定書をLINEでお届けします。ご質問があればお気軽にどうぞ。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Final CTA ══ -->
+<section class="final-cta">
+  <div class="mystical-numbers" id="ctaNumbers"></div>
+  <div class="cta-inner">
+    <p class="cta-text fade-in">
+      数字が教えてくれる、<br>
+      あなただけの<em>物語。</em>
+    </p>
+    <div class="cta-buttons fade-in">
+      <a href="https://noa.stores.jp/" target="_blank" rel="noopener" class="btn btn-line">鑑定メニューを見る</a>
+      <a href="https://x.gd/PQnRG" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg class="btn-icon" viewBox="0 0 24 24"><path class="line-svg" d="M19.365 9.863c.349 0 .63.285.63.631 0 .348-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .349-.281.63-.63.63h-2.386a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 .63-.63h2.386c.349 0 .63.282.63.63 0 .349-.281.631-.63.631H17.61v1.125h1.755zm-3.855 3.016a.63.63 0 0 1-.63.63.629.629 0 0 1-.51-.26l-2.443-3.317v2.947a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 .63-.63c.2 0 .385.095.505.254l2.449 3.32V8.108a.63.63 0 0 1 1.26 0v4.771zm-5.741 0a.63.63 0 0 1-1.26 0V8.108a.63.63 0 0 1 1.26 0v4.771zm-2.527.63H4.856a.63.63 0 0 1-.63-.63V8.108a.63.63 0 0 1 1.26 0v4.14h1.756c.348 0 .629.283.629.631 0 .348-.281.63-.629.63zM12 1c-6.627 0-12 4.208-12 9.399 0 4.636 4.097 8.534 9.602 9.281.375.082.886.257.998.59.104.303.068.778.034 1.081l-.157.938c-.05.301-.234 1.183 1.026.645 1.261-.539 6.799-4.009 9.28-6.867C22.754 14.036 24 11.88 24 9.399 24 5.208 19.627 1 12 1z"/></svg>
+        オープンチャットに参加
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 のあ｜数秘術鑑定</footer>
+
+<script>
+// Intersection Observer for fade-in
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Mystical floating numbers
+function createFloatingNumbers(containerId, count){
+  const container=document.getElementById(containerId);
+  if(!container)return;
+  const symbols=['1','2','3','4','5','6','7','8','9','11','22','33','✦','☽','∞'];
+  for(let i=0;i<count;i++){
+    const span=document.createElement('span');
+    span.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    span.style.left=Math.random()*100+'%';
+    span.style.fontSize=(Math.random()*2+1)+'rem';
+    span.style.animationDuration=(Math.random()*15+15)+'s';
+    span.style.animationDelay=(Math.random()*20)+'s';
+    container.appendChild(span);
+  }
+}
+createFloatingNumbers('heroNumbers',20);
+createFloatingNumbers('bannerNumbers',10);
+createFloatingNumbers('ctaNumbers',10);
+</script>
+</body>
+</html>
